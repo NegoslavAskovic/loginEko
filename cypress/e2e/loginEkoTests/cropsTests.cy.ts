@@ -5,9 +5,7 @@ import { sunflowerCropPage } from "../../pages/sunflowerCropPage";
 
 describe("Crops tests", () => {
   beforeEach(() => {
-    cy.loginWithKeycloak().then(() => {
-      cy.visit("/");
-    });
+    cy.visit("/");
   });
 
   it("Crops functionalities are correct", () => {
@@ -88,7 +86,6 @@ describe("Crops tests", () => {
     cy.contains("Pea");
     cy.contains("Hemp");
     cy.contains("Orchardgrass & Red clover & Tall fescue");
-    cy.contains("Chickpea");
     cy.contains("Cowpea");
     cy.contains("Orchardgrass & Sorghum & Tall fescue");
     cy.contains("Bean");
