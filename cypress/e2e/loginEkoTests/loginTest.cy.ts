@@ -1,21 +1,22 @@
-beforeEach(() => {
-  cy.loginWithKeycloak().then(({ accessToken, sessionState }) => {
-    cy.setCookie("KEYCLOAK_IDENTITY", accessToken, { path: "/" });
-    cy.setCookie("KEYCLOAK_SESSION", sessionState, { path: "/" });
+describe("Programmatic Keycloak Login and Authenticated Visit", () => {
+  it("logs in, exchanges token, and shows logged-in UI", () => {
+    cy.programmaticLogin()
+      .then((code) => cy.exchangeCodeForToken(code))
+      .then(({ access_token }) => {
+        cy.log("Access Token:", access_token);
 
-    cy.visit("/", {
-      onBeforeLoad(win) {
-        win.localStorage.setItem("token_logineko", accessToken);
-      },
-    });
-  });
-});
+        // Save token to localStorage so app knows user is logged in
+        cy.window().then((win) => {
+          win.localStorage.setItem("token_logineko", access_token);
+        });
 
-it("should show logged-in UI", () => {
-  cy.getCookie("KEYCLOAK_IDENTITY").should("exist");
-  cy.window().then((win) => {
-    const token = win.localStorage.getItem("token_logineko");
-    expect(token).to.exist;
+        // Visit the app now that we have token in localStorage
+        cy.visit("/");
+
+        // Assert logged-in UI appears
+        cy.contains("e2e tester", { timeout: 10000 })
+          .scrollIntoView()
+          .should("be.visible");
+      });
   });
-  cy.contains("e2E tester", { timeout: 10000 }).should("be.visible");
 });
