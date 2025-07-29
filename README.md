@@ -12,16 +12,19 @@ How to Clone and Run the Project Locally
 5. Clone the repository by running:
    git clone https://github.com/NegoslavAskovic/loginEko
 
-6. Open the project in Visual Studio Code (or your preferred editor):
+6. Change into the cloned directory:
+   cd automated-tests
+
+7. Open the project in Visual Studio Code (or your preferred editor):
    code .
 
-7. Install dependencies with a clean install:
+8. Install dependencies with a clean install:
    npm install
 
-8. Install Cypress:
+9. Install Cypress:
    npx cypress install
 
-9. To run the tests:
+10. To run the tests:
 
 Open the Cypress Test Runner UI:
 npx cypress open
