@@ -1,20 +1,22 @@
-describe("Programmatic Keycloak Login and Authenticated Visit", () => {
-  it("logs in, exchanges token, and shows logged-in UI", () => {
+describe("Programmatic Login and Authenticated Visit", () => {
+  it("Login without UI", () => {
     cy.programmaticLogin()
       .then((code) => cy.exchangeCodeForToken(code))
       .then(({ access_token }) => {
         cy.log("Access Token:", access_token);
 
-        // Save token to localStorage so app knows user is logged in
+        // Save token to localStorage
         cy.window().then((win) => {
           win.localStorage.setItem("token_logineko", access_token);
         });
 
-        // Visit the app now that we have token in localStorage
+        /* Error message is displaying when land page is url which is defined in task
+        'https://app.e2e.gcp.logineko.com/logineko/map?loc=20.174149,45.679332&zoom=9.74&date=1'
+        */
         cy.visit("/");
 
-        // Assert logged-in UI appears
-        cy.contains("e2e tester", { timeout: 10000 })
+        // Assert user is logged-in
+        cy.contains(" E2e Tester ", { timeout: 10000 })
           .scrollIntoView()
           .should("be.visible");
       });

@@ -1,8 +1,8 @@
 How to Clone and Run the Project Locally
 
-1. Go to your GitHub repository page (e.g., https://github.com/your-org/automated-tests).
+1. Go to your GitHub repository page https://github.com/NegoslavAskovic/loginEko
 
-2. Click the green Code button, then copy the repository URL (choose HTTPS or SSH).
+2. Click the green Code button, then copy the repository URL (choose HTTPS ).
 
 3. Open your terminal (Git Bash, Command Prompt, or any Git client).
 
@@ -32,23 +32,15 @@ npx cypress run
 ⚠️ Important: Set Your Credentials for commands.ts
 The sensitive values used in commands.ts — such as:
 
-url  
-grant_type  
-client_id  
-username  
-password
+"URL":,
+"GRANT_TYPE":,
+"CLIENT_ID":,
+"USERNAME":,
+"PASSWORD":,
+"KEYCLOAK_BASE_URL":,
+"REALM":,
+"REDIRECT_URI":
 
 — are not included in this repo for security reasons.
-o provide your own values:
 
-Create a file named cypress.env.json in the root of the project (if it doesn’t exist).
-
-Add your credentials in the following format:
-
-{
-"URL": "https://your-auth-url.com",
-"GRANT_TYPE": "password",
-"CLIENT_ID": "your-client-id",
-"USERNAME": "your-username",
-"PASSWORD": "your-password"
-}
+Create a file named cypress.env.json in the root of the project (if it doesn’t exist) and add appropriate values.

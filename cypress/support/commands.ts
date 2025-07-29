@@ -57,7 +57,7 @@ Cypress.Commands.add(
               );
             }
 
-            cy.log("✅ Login redirect successful:", location);
+            cy.log("Login redirect successful:", location);
 
             const urlObj = new URL(location);
             const code = urlObj.searchParams.get("code");
@@ -85,8 +85,6 @@ Cypress.Commands.add(
       client_id: Cypress.env("CLIENT_ID"),
       code: code,
       redirect_uri: Cypress.env("REDIRECT_URI"),
-      // client_secret if needed:
-      // client_secret: Cypress.env("CLIENT_SECRET"),
     };
 
     return cy

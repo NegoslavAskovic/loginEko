@@ -9,7 +9,7 @@ describe("Weather Stations tests", () => {
   it(" filter manipulation has correct results", () => {
     homePage.elements.weatherStationIcon().click();
 
-    //validation panel is displayed is opened and "All" is preselected
+    //Validation panel is displayed is opened and "All" is preselected
     weatherStationsPage.elements.sectionTitle().contains(" Weather stations ");
     weatherStationsPage.elements.filter().should("be.visible").contains("All");
 

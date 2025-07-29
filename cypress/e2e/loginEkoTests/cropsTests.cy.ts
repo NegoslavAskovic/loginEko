@@ -9,7 +9,7 @@ describe("Crops tests", () => {
   });
 
   it("Crops functionalities are correct", () => {
-    /* Error message is displaying when land page is url which is deined in task
+    /* Error message is displaying when land page is url which is defined in task
     'https://app.e2e.gcp.logineko.com/logineko/map?loc=20.174149,45.679332&zoom=9.74&date=1'
     */
     cy.contains("LoginEKO");
@@ -74,7 +74,7 @@ describe("Crops tests", () => {
     cy.contains("In certification, 1st year").should("not.exist");
     cy.contains(" Certified organic ");
 
-    // validate back button is correct
+    // Validate back button is correct
     cy.contains("MU-108").click();
     sunflowerCropPage.elements.backButton().click();
     cy.get(".title-container").should("not.contain", "Varieties");
